@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { register, login } from "../contrrollers/authontrrollers"
+import { register, login } from "../contrrollers/authContrrollers"
 
 
 
