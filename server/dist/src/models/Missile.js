@@ -30,8 +30,6 @@ const MissileSchema = new mongoose_1.Schema({
     speed: { type: Number, required: true },
     intercepts: { type: [String], required: true },
     price: { type: Number, required: true },
-}, {
-    timestamps: true,
 });
 const Missile = mongoose_1.default.model('Missile', MissileSchema);
 exports.default = Missile;

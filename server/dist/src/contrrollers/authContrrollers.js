@@ -24,12 +24,11 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             res.status(400).json({ message: 'User already exists' });
             return;
         }
-        const userOrganization = yield Organization_1.default.findOne({ name: `${organization} - ${region}` || organization });
+        const userOrganization = yield Organization_1.default.findOne({ name: `${organization} - ${region}` || { name: organization } });
         if (!userOrganization) {
             res.status(400).json({ message: 'Organization not found' });
             return;
         }
-        // יצירת משתמש חדש עם ארגון ותחמשות מתאימים
         const newUser = new User_1.default({
             username,
             password,
@@ -37,8 +36,6 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             region,
             missiles: userOrganization ? userOrganization.resources : [],
         });
-        console.log(newUser);
-        console.log(newUser.missiles || []);
         yield newUser.save();
         res.status(201).json({ message: 'User registered successfully' });
     }

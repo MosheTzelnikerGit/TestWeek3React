@@ -16,29 +16,21 @@ const initialState: UserState = {
   token: localStorage.getItem("token") || null,
 };
 
-// פונקציה לרישום משתמש חדש
+
 export const registerUser = createAsyncThunk(
   "user/register",
-  async (userData: { username: string; password: string; isAdmin: boolean }) => {
+  async (userData: { username: string; password: string; organization: string; region?: string }) => {
     const response = await axios.post("http://localhost:3000/api/register", userData);
     localStorage.setItem("token", response.data.token);
     return response.data;
   }
 );
 
-// פונקציה להתחברות משתמש קיים
+
 export const loginUser = createAsyncThunk(
   "user/login",
   async (credentials: { username: string; password: string }) => {
     const response = await axios.post("http://localhost:3000/api/login", credentials);
-
-    // בדיקה אם המשתמש הוא מנהל או לא, והדפסת התוצאה לקונסול
-    if (response.data.user.isAdmin) {
-      console.log("TRUE");  // משתמש הוא מנהל
-    } else {
-      console.log("FALSE");  // משתמש רגיל
-    }
-
     localStorage.setItem("token", response.data.token);
     return response.data;
   }
@@ -88,7 +80,7 @@ export const userSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.user = action.payload.user; // שמירה של מידע המשתמש
+        state.user = action.payload.user;
         state.token = action.payload.accessToken;
       })
       .addCase(loginUser.rejected, (state, action) => {

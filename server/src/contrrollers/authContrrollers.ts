@@ -11,7 +11,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
         res.status(400).json({ message: 'User already exists' });
         return;
       }
-      const userOrganization = await Organization.findOne({ name: `${organization} - ${region}` || organization });
+      const userOrganization = await Organization.findOne({ name: `${organization} - ${region}` || { name: organization } });
       if (!userOrganization) {
         res.status(400).json({ message: 'Organization not found' });
         return;
