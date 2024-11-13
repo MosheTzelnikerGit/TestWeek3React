@@ -16,9 +16,6 @@ const MissileSchema: Schema<IMissile> = new Schema(
     intercepts: { type: [String], required: true },
     price: { type: Number, required: true },
   },
-  {
-    timestamps: true,
-  }
 );
 
 const Missile = mongoose.model<IMissile>('Missile', MissileSchema);

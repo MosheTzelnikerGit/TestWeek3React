@@ -15,18 +15,35 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.login = exports.register = void 0;
 const User_1 = __importDefault(require("../models/User"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const Organization_1 = __importDefault(require("../models/Organization"));
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const userRegistered = new User_1.default(req.body);
-        const user = yield User_1.default.findOne({ username: userRegistered.username });
-        if (user) {
+        const { username, password, organization, region } = req.body;
+        const existingUser = yield User_1.default.findOne({ username });
+        if (existingUser) {
             res.status(400).json({ message: 'User already exists' });
             return;
         }
-        const savedUser = yield userRegistered.save();
+        const userOrganization = yield Organization_1.default.findOne({ name: `${organization} - ${region}` || organization });
+        if (!userOrganization) {
+            res.status(400).json({ message: 'Organization not found' });
+            return;
+        }
+        // יצירת משתמש חדש עם ארגון ותחמשות מתאימים
+        const newUser = new User_1.default({
+            username,
+            password,
+            organization,
+            region,
+            missiles: userOrganization ? userOrganization.resources : [],
+        });
+        console.log(newUser);
+        console.log(newUser.missiles || []);
+        yield newUser.save();
         res.status(201).json({ message: 'User registered successfully' });
     }
     catch (error) {
+        console.error('Error registering user:', error);
         res.status(500).json({ message: 'Error registering user' });
     }
 });
@@ -34,7 +51,7 @@ exports.register = register;
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { username, password } = req.body;
-        const user = yield User_1.default.findOne({ username: username });
+        const user = yield User_1.default.findOne({ username });
         if (!user) {
             res.status(401).json({ message: 'Invalid credentials' });
             return;

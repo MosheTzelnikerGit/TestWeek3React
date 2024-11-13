@@ -25,11 +25,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 const OrganizationSchema = new mongoose_1.Schema({
-    name: { type: String, required: true },
-    resources: { type: [String], required: true },
+    name: { type: String, required: true, unique: true },
+    resources: [
+        {
+            name: { type: String, required: true },
+            amount: { type: Number, required: true },
+        },
+    ],
     budget: { type: Number, required: true },
-}, {
-    timestamps: true,
 });
 const Organization = mongoose_1.default.model('Organization', OrganizationSchema);
 exports.default = Organization;

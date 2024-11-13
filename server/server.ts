@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './src/data/db';
 import authRoutes from './src/routes/authRoutes';
+import missileRoutes from './src/routes/missileRoutes';
 
 
 
@@ -16,7 +17,8 @@ connectDB();
 
 
 app.use('/api/', authRoutes);
-// app.use('/api/', candidateRoutes);
+app.use('/api/missile',missileRoutes );
+
 
 
 

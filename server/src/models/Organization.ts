@@ -1,24 +1,23 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-
-interface IOrganization extends Document {
+export interface IOrganization extends Document {
   name: string;
-  resources: string[]; 
+  resources: { name: string; amount: number }[];
   budget: number;
 }
 
-
-const OrganizationSchema: Schema<IOrganization> = new Schema(
-  {
-    name: { type: String, required: true },
-    resources: { type: [String], required: true }, 
-    budget: { type: Number, required: true },
-  },
-  {
-    timestamps: true, 
-  }
-);
+const OrganizationSchema: Schema<IOrganization> = new Schema({
+  name: { type: String, required: true, unique: true },
+  resources: [
+    {
+      name: { type: String, required: true },
+      amount: { type: Number, required: true },
+    },
+  ],
+  budget: { type: Number, required: true },
+});
 
 const Organization = mongoose.model<IOrganization>('Organization', OrganizationSchema);
 
 export default Organization;
+

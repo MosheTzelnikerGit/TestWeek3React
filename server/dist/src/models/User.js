@@ -29,8 +29,7 @@ const UserSchema = new mongoose_1.Schema({
     password: { type: String, required: true },
     organization: { type: String, required: true, enum: ['IDF', 'Hezbollah', 'Hamas', 'Houthis', 'IRGC'] },
     region: { type: String, enum: ['North', 'South', 'Central', 'Judea and Samaria'] },
-}, {
-    timestamps: true,
+    missiles: [{ name: String, amount: Number }],
 });
 const User = mongoose_1.default.model('User', UserSchema);
 exports.default = User;
