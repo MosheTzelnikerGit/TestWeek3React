@@ -1,10 +1,9 @@
-/* עיצוב כללי לדף */
 .DefensePageContainer {
-    background-color: #f0f4f8; /* רקע בהיר */
+    background-color: #f0f4f8; 
     color: #333333;
     font-family: Arial, sans-serif;
     padding: 20px;
-    max-width: 1000px; /* רוחב מקסימלי סביר */
+    max-width: 1000px; 
     margin: 0 auto;
     min-height: 100vh;
     box-sizing: border-box;
@@ -12,7 +11,6 @@
     overflow-y: auto;
   }
   
-  /* כפתור התנתקות */
   .DefensePageLogoutButton {
     position: absolute;
     top: 20px;
@@ -31,20 +29,20 @@
     background-color: #ff4d4d;
   }
   
-  /* כותרות */
+ 
   .DefensePageTitle {
-    font-size: 2.5em; /* גודל כותרת מותאם */
+    font-size: 2.5em; 
     margin-bottom: 20px;
     color: #333333;
   }
   
   .DefensePageSubtitle {
-    font-size: 1.5em; /* כותרת משנה בגודל בינוני */
+    font-size: 1.5em; 
     margin: 15px 0;
     color: #444444;
   }
   
-  /* רשימת המשאבים */
+ 
   .DefensePageResourceList {
     display: flex;
     flex-wrap: wrap;
@@ -57,7 +55,7 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 15px;
-    width: 160px; /* גודל כרטיסים מותאם */
+    width: 160px; 
     text-align: center;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   }
@@ -82,8 +80,7 @@
   .DefensePageResourceButton:hover {
     background-color: #4da6ff;
   }
-  
-  /* טבלה */
+
   .DefensePageTable {
     width: 100%;
     margin-top: 20px;
@@ -113,7 +110,7 @@
     background-color: #e0f7fa;
   }
   
-  /* בחירת אזור */
+
   .DefensePageSelect {
     background-color: #ffffff;
     color: #333333;

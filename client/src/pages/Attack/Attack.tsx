@@ -18,7 +18,7 @@ const DefensePage: React.FC = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/");
   };
 
   const handleMissileClick = async (missileName: string, e: React.MouseEvent) => {

@@ -82,7 +82,7 @@ const Register: React.FC = () => {
       {userStatus === "loading" && <p>Registering...</p>}
       {userStatus === "failed" && <p>Registration failed</p>}
       {userStatus === "succeeded" && <p>Registration successful!</p>}
-      <p>Already have an account? <Link to="/login">Login</Link></p>
+      <p>Already have an account? <Link to="/">Login</Link></p>
     </form>
   );
 };
