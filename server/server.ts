@@ -1,23 +1,29 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import connectDB from './src/data/db';
+import connectDB from './src/config/db';
 import authRoutes from './src/routes/authRoutes';
-import missileRoutes from './src/routes/missileRoutes';
+import missileRoutes from './src/routes/ammoRoutes';
+// import { createServer } from "http";
+// import { initializeSocketServer } from "./src/socketServer";
 
 
 
 dotenv.config();
 
 const app = express();
+const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors());
 
 connectDB();
 
+// const httpServer = createServer(app);
 
-app.use('/api/', authRoutes);
-app.use('/api/missile',missileRoutes );
+// const io = initializeSocketServer(httpServer);
+
+app.use('/api', authRoutes);
+app.use('/api',missileRoutes );
 
 
 

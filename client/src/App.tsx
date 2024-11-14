@@ -1,20 +1,19 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import Login from "./components/Login/Login";
-import Register from "./components/Register/Register";
-import CandidateList from "./components/StatisticsCandidate/StatisticsCandidate";
+import { Route, Routes } from "react-router-dom";
+import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
+import Defence from "./pages/Defence/Defence";
+import Attack from "./pages/Attack/Attack";
 
-
-function App() {
+const App = () => {
   return (
-    <Router>
+    <div>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/candidates" element={<CandidateList />} />
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/defence" element={<Defence />} />
+        <Route path="/attack" element={<Attack />} />  
       </Routes>
-    </Router>
+    </div>
   );
-}
-
+};
 export default App;

@@ -4,7 +4,7 @@ interface IUser extends Document {
   password: string;
   organization: string;
   region?: string;
-  missiles?: { name: string; amount: number }[];
+  resources: { name: string; amount: number }[];
   
 }
 
@@ -12,9 +12,14 @@ const UserSchema: Schema<IUser> = new Schema(
   {
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    organization: { type: String, required: true, enum: ['IDF', 'Hezbollah', 'Hamas', 'Houthis', 'IRGC'] },
-    region: { type: String, enum: ['North', 'South', 'Central', 'Judea and Samaria','null'] },
-    missiles: [{ name: String, amount: Number }],
+    organization: { type: String, required: true },
+    region: { type: String },
+    resources: [
+      {
+        name: { type: String, required: true },
+        amount: { type: Number, required: true },
+      },
+    ]
   },
 );
 

@@ -12,20 +12,41 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getMissiles = void 0;
-const User_1 = __importDefault(require("../models/User"));
-const getMissiles = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.getDetailsOfAmmo = exports.getResources = void 0;
+const Organization_1 = __importDefault(require("../models/Organization"));
+const Missile_1 = __importDefault(require("../models/Missile"));
+const getResources = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { organization, region } = req.body;
     try {
-        const user = yield User_1.default.findOne({ _id: req.params.id });
-        if (!user) {
-            res.status(404).json({ message: 'User not found' });
+        let existOrganization;
+        if (region) {
+            existOrganization = yield Organization_1.default.findOne({ name: `${organization} - ${region}` });
+        }
+        if (!existOrganization) {
+            existOrganization = yield Organization_1.default.findOne({ name: organization });
+        }
+        if (!existOrganization) {
+            res.status(400).json({ message: "Organization not found", success: false });
             return;
         }
-        res.status(200).json(user);
+        const resources = existOrganization.resources.map((r) => r.name);
+        res.status(200).json({ data: existOrganization.resources, success: true });
     }
     catch (error) {
-        res.status(500).json({ message: 'Failed to fetch missiles', error });
+        console.error(error);
+        res.status(500).json({ message: "Failed to retrieve defense tools." });
     }
 });
-exports.getMissiles = getMissiles;
+exports.getResources = getResources;
+const getDetailsOfAmmo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const ammo = req.params.name;
+    try {
+        const details = yield Missile_1.default.findOne({ name: ammo });
+        res.status(200).json({ data: details, success: true });
+    }
+    catch (error) {
+        res.status(400).json({ message: "error", success: false });
+    }
+});
+exports.getDetailsOfAmmo = getDetailsOfAmmo;
 //# sourceMappingURL=missileContrrollers.js.map
