@@ -1,0 +1,127 @@
+/* עיצוב כללי לדף */
+.DefensePageContainer {
+  background-color: #f0f4f8; /* רקע בהיר */
+  color: #333333;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  max-width: 1000px; /* רוחב מקסימלי סביר */
+  margin: 0 auto;
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+  overflow-y: auto;
+}
+
+/* כפתור התנתקות */
+.DefensePageLogoutButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #ff6666;
+  color: #ffffff;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.DefensePageLogoutButton:hover {
+  background-color: #ff4d4d;
+}
+
+/* כותרות */
+.DefensePageTitle {
+  font-size: 2.5em; /* גודל כותרת מותאם */
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.DefensePageSubtitle {
+  font-size: 1.5em; /* כותרת משנה בגודל בינוני */
+  margin: 15px 0;
+  color: #444444;
+}
+
+/* רשימת המשאבים */
+.DefensePageResourceList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.DefensePageResourceCard {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  width: 160px; /* גודל כרטיסים מותאם */
+  text-align: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.DefensePageResourceTitle {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+  color: #555555;
+}
+
+.DefensePageResourceButton {
+  background-color: #66b3ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.DefensePageResourceButton:hover {
+  background-color: #4da6ff;
+}
+
+/* טבלה */
+.DefensePageTable {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  color: #333333;
+}
+
+.DefensePageTable th,
+.DefensePageTable td {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  font-size: 1em;
+  text-align: center;
+}
+
+.DefensePageTable th {
+  background-color: #e6f2ff;
+  color: #333333;
+  font-weight: bold;
+}
+
+.DefensePageTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.DefensePageTable tr:hover {
+  background-color: #e0f7fa;
+}
+
+/* בחירת אזור */
+.DefensePageSelect {
+  background-color: #ffffff;
+  color: #333333;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1em;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
