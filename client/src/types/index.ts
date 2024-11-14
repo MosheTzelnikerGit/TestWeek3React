@@ -20,3 +20,19 @@ export interface User {
     price: number;
   }
   
+  // טיפוס Resource לתיאור המשאבים
+export interface Resource  {
+  _id: string;
+  name: string;
+  amount: number;
+};
+
+// טיפוס MissileDetails עבור המידע על הטילים
+export interface AmmoDetails  {
+  _id: string;
+  name: string;
+  description: string;
+  speed: number;
+  price: number;
+  intercepts: string[];
+};

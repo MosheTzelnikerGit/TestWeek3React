@@ -7,8 +7,6 @@ import missileRoutes from './src/routes/ammoRoutes';
 // import { createServer } from "http";
 // import { initializeSocketServer } from "./src/socketServer";
 
-
-
 dotenv.config();
 
 const app = express();
@@ -19,7 +17,6 @@ app.use(cors());
 connectDB();
 
 // const httpServer = createServer(app);
-
 // const io = initializeSocketServer(httpServer);
 
 app.use('/api', authRoutes);
